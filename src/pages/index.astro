@@ -54,7 +54,8 @@ const images = [
 		<section id="gallery" class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 relative z-20 pb-20">
 			<div class="masonry-grid pt-4 mt-4 sm:mt-6">
 				{images.map((image, index) => {
-					const isTopRow = [0, 3, 4, 6].includes(index);
+					// 0, 2, 4 are the top row on desktop. 0, 1, 2 are the top on mobile.
+					const isTopRow = [0, 1, 2, 4].includes(index);
 					return (
 					<div class={`masonry-item overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500${!isTopRow ? ' fade-up-element' : ''}`}>
 						<img 

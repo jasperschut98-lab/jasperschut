@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { 
+  title, 
+  description = "De minimalistische portfolio van freelance fotograaf Jasper Schut. Pure fotografie, geen poespas." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="nl" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Jasper Schut" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- OpenGraph Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://jasperschut.nl/" />
+		<meta property="og:image" content="/images/logo.png" />
+		<meta property="og:site_name" content="Jasper Schut | Fotografie" />
+
+		<!-- Preconnect to Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!-- Switched to Outfit for a sharper, modern, premium aesthetic -->
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-white text-gray-900 font-sans antialiased selection:bg-gray-900 selection:text-white">
+		<slot />
+	</body>
+</html>

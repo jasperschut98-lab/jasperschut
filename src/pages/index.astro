@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// A mix of portrait and landscape images as scraped
+const images = [
+  { src: '/images/IMG_0143-768x1024.jpeg', alt: 'Portretfotografie' },
+  { src: '/images/019-1024x683.jpg', alt: 'Landschapsfotografie' },
+  { src: '/images/IMG_0135-768x1024.jpeg', alt: 'Portretfotografie' },
+  { src: '/images/imm012_N12-1024x683.jpg', alt: 'Natuurfotografie' },
+  { src: '/images/imm018_20-1024x683.jpg', alt: 'Natuurfotografie' },
+  { src: '/images/imm028_N28-1024x683.jpg', alt: 'Landschapsfotografie' },
+  { src: '/images/imm021_N21-1024x683.jpg', alt: 'Natuurfotografie' },
+  { src: '/images/IMG_4346-1024x768.jpeg', alt: 'Landschapsfotografie' }
+];
+---
+
+<Layout title="Jasper Schut | Fotograaf">
+	<!-- Fixed Header/Nav -->
+	<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 sm:px-10 sm:py-6 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100">
+		<a href="/" class="group flex items-center gap-3 transition-transform duration-500">
+			<span class="relative text-xl sm:text-2xl font-semibold tracking-widest text-gray-900 uppercase flex items-center transition-all duration-500 overflow-hidden group-hover:tracking-[0.2em]">
+				<span class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 mr-1 text-gray-400 font-light">[</span>
+				<span class="logo-shutter-text">Jasper Schut</span>
+				<span class="opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ml-1 text-gray-400 font-light">]</span>
+			</span>
+		</a>
+		<div class="flex items-center gap-6">
+			<a href="/series" class="text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">Series</a>
+			<a href="/over-mij" class="text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">Over mij</a>
+			<a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors flex items-center gap-2">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+				<span class="hidden sm:inline">Instagram</span>
+			</a>
+		</div>
+	</header>
+
+	<main class="w-full">
+		<!-- Hero Section -->
+		<section class="relative h-[80vh] flex flex-col items-center justify-center px-4 overflow-hidden">
+			<!-- Subtle background gradient/grain for premium feel -->
+			<div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-80 z-0"></div>
+			
+			<div class="z-10 text-center max-w-4xl mx-auto flex flex-col items-center mb-32 sm:mb-40">
+				<h1 class="text-4xl sm:text-6xl md:text-8xl font-extralight tracking-tight mb-6 animate-fade-in-slow text-gray-900">
+					Echte. <span class="italic font-light text-gray-400">Momenten.</span>
+				</h1>
+				<p class="text-lg sm:text-xl text-gray-600 font-light max-w-2xl leading-relaxed animate-fade-in-delayed hidden sm:block">
+					Echte momenten, ongeënsceneerd vastgelegd. Straatfotografie met een focus op authenticiteit en de rauwe realiteit.
+				</p>
+			</div>
+		</section>
+
+		<!-- Masonry Gallery -->
+		<section id="gallery" class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 -mt-64 sm:-mt-80 relative z-20 pb-10">
+			<div class="masonry-grid pt-10">
+				{images.map((image) => (
+					<div class="masonry-item fade-up-element overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500">
+						<img 
+							src={image.src} 
+							alt={image.alt} 
+							loading="lazy"
+							class="gallery-image w-full h-auto object-cover hover-trigger transition-all duration-700 opacity-90 group-hover:opacity-100" 
+							data-full={image.src}
+						/>
+						<!-- Hover Overlay Text -->
+						<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+							<span class="text-white text-xs uppercase tracking-widest">{image.alt}</span>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+	</main>
+
+	<!-- Footer -->
+	<footer class="w-full flex justify-between px-6 py-8 border-t border-gray-100 bg-white">
+		<p class="text-xs text-gray-400 tracking-wider font-light">
+			&copy; {new Date().getFullYear()} Jasper Schut. Fotografie.
+		</p>
+		<p class="text-xs text-gray-400 tracking-wider font-light">
+			Gevestigd in Nederland
+		</p>
+	</footer>
+
+	<!-- Sticky Navigation Buttons -->
+	<div class="fixed bottom-6 left-6 z-40">
+		<button id="back-to-top" class="opacity-0 translate-y-4 pointer-events-none transition-all duration-500 bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-900 text-gray-900 w-12 h-12 flex items-center justify-center rounded-full" aria-label="Terug naar boven">
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+		</button>
+	</div>
+	
+	<div class="fixed bottom-6 right-6 z-40">
+		<a href="/over-mij" class="flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:bg-black transition-all duration-300 text-xs uppercase tracking-widest font-medium">
+			Contact & Info
+		</a>
+	</div>
+
+	<!-- Fullscreen Lightbox Overlay -->
+	<div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center cursor-zoom-out">
+		<button id="lightbox-close" class="absolute top-6 right-6 text-white opacity-60 hover:opacity-100 z-50">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+			</svg>
+		</button>
+		<img id="lightbox-img" src="" alt="Geopende Foto" class="max-h-[90vh] max-w-[90vw] object-contain select-none transition-transform duration-300 scale-95" />
+	</div>
+</Layout>
+
+<style>
+	/* Entrance animations */
+	@keyframes fadeInSlow {
+		from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+		to { opacity: 1; transform: translateY(0); filter: blur(0); }
+	}
+	.animate-fade-in-slow {
+		animation: fadeInSlow 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+	}
+	.animate-fade-in-delayed {
+		opacity: 0;
+		animation: fadeInSlow 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+		animation-delay: 0.5s;
+	}
+	@keyframes bounceSlow {
+		0%, 100% { transform: translateY(-10px); }
+		50% { transform: translateY(10px); }
+	}
+	.animate-bounce-slow {
+		animation: bounceSlow 3s infinite ease-in-out;
+	}
+</style>
+
+<script>
+	// 1. Smooth Scroll Fade-up using Intersection Observer
+	const fadeUpObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('is-visible');
+				fadeUpObserver.unobserve(entry.target); // Only animate once
+			}
+		});
+	}, {
+		root: null,
+		threshold: 0.1,
+		rootMargin: "0px 0px -50px 0px"
+	});
+
+	document.querySelectorAll('.fade-up-element').forEach(el => {
+		fadeUpObserver.observe(el);
+	});
+
+	// 2. Lightbox Logic
+	const galleryImages = document.querySelectorAll('.gallery-image');
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImg = document.getElementById('lightbox-img');
+	const lightboxClose = document.getElementById('lightbox-close');
+
+	// Open Lightbox
+	galleryImages.forEach(img => {
+		img.addEventListener('click', (e) => {
+			if(lightbox && lightboxImg) {
+				const src = e.target.getAttribute('data-full');
+				lightboxImg.setAttribute('src', src);
+				
+				// Show
+				lightbox.classList.remove('hidden');
+				// Small delay to allow display:block to apply before animating opacity
+				requestAnimationFrame(() => {
+					lightbox.classList.remove('opacity-0');
+					lightboxImg.classList.remove('scale-95');
+					lightboxImg.classList.add('scale-100');
+				});
+				
+				// Prevent scrolling on body
+				document.body.style.overflow = 'hidden';
+			}
+		});
+	});
+
+	// Close Lightbox function
+	const closeLightbox = () => {
+		if(lightbox && lightboxImg) {
+			lightbox.classList.add('opacity-0');
+			lightboxImg.classList.remove('scale-100');
+			lightboxImg.classList.add('scale-95');
+			
+			// Wait for transition to finish
+			setTimeout(() => {
+				lightbox.classList.add('hidden');
+				lightboxImg.setAttribute('src', '');
+				document.body.style.overflow = '';
+			}, 300);
+		}
+	};
+
+	// Close on click or Escape
+	if(lightbox) {
+		lightbox.addEventListener('click', closeLightbox);
+		// Stop propagation when clicking the image itself so it doesn't close
+		lightboxImg?.addEventListener('click', (e) => e.stopPropagation());
+		
+		document.addEventListener('keydown', (e) => {
+			if(e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+				closeLightbox();
+			}
+		});
+	}
+	
+	if(lightboxClose) {
+		lightboxClose.addEventListener('click', closeLightbox);
+	}
+
+	// 3. Back to Top Button Logic
+	const backToTopBtn = document.getElementById('back-to-top');
+	
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 500) {
+			backToTopBtn?.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+			backToTopBtn?.classList.add('opacity-100', 'translate-y-0');
+		} else {
+			backToTopBtn?.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+			backToTopBtn?.classList.remove('opacity-100', 'translate-y-0');
+		}
+	});
+
+	backToTopBtn?.addEventListener('click', () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+</script>

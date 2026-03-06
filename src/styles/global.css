@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer utilities {
+    .masonry-grid {
+        column-count: 1;
+        column-gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+        .masonry-grid {
+            column-count: 2;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .masonry-grid {
+            column-count: 3;
+        }
+    }
+
+    .masonry-item {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        width: 100%;
+        cursor: zoom-in;
+    }
+
+    .hover-trigger {
+        transition: opacity 0.5s ease-in-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .hover-trigger:hover {
+        transform: scale(1.03);
+    }
+
+    /* Custom minimal scrollbar for Light Theme */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f9fafb;
+        /* gray-50 */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        /* gray-300 */
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
+        /* gray-400 */
+    }
+
+    /* Focal Plane Shutter Effect for Logo */
+    @keyframes shutterBlade {
+        0% {
+            height: 0%;
+            top: 0;
+            bottom: auto;
+        }
+
+        40% {
+            height: 100%;
+            top: 0;
+            bottom: auto;
+        }
+
+        60% {
+            height: 100%;
+            top: auto;
+            bottom: 0;
+        }
+
+        100% {
+            height: 0%;
+            top: auto;
+            bottom: 0;
+        }
+    }
+
+    /* Subtle Shutter Clip Effect for Logo */
+    @keyframes subtleShutterClip {
+
+        0%,
+        100% {
+            clip-path: inset(0 0 0 0);
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            clip-path: inset(45% 0 45% 0);
+            opacity: 0;
+            transform: scale(0.98);
+        }
+    }
+
+    .logo-shutter-text {
+        display: inline-block;
+    }
+
+    .group:hover .logo-shutter-text {
+        animation: subtleShutterClip 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Fade on scroll */
+.fade-up-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-up-element.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Lightbox Styles */
+#lightbox {
+    backdrop-filter: blur(10px);
+}

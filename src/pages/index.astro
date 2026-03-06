@@ -54,11 +54,11 @@ const images = [
 		<section id="gallery" class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 relative z-20 pb-20">
 			<div class="masonry-grid pt-4 mt-4 sm:mt-6">
 				{images.map((image, index) => (
-					<div class={`masonry-item overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500${index >= 3 ? ' fade-up-element' : ''}`}>
+					<div class="masonry-item overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500">
 						<img 
 							src={image.src} 
 							alt={image.alt} 
-							loading={index < 3 ? 'eager' : 'lazy'}
+							loading="eager"
 							class="gallery-image w-full h-auto object-cover hover-trigger transition-all duration-700 opacity-90 group-hover:opacity-100" 
 							data-full={image.src}
 						/>

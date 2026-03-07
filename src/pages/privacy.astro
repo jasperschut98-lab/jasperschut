@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Jasper Schut | Privacy Policy">
+	<header class="w-full py-8 px-6 sm:px-10 flex justify-between items-center fixed top-0 bg-white/90 backdrop-blur-sm z-50">
+		<a href="/" class="text-lg font-medium tracking-wide text-gray-900 relative group overflow-hidden">
+			<span class="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light mr-1">[</span>
+			JS
+			<span class="opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light ml-1">]</span>
+		</a>
+		<div class="flex gap-6 sm:gap-8 text-xs uppercase tracking-widest text-gray-500">
+			<a href="/series" class="hover:text-gray-900 transition-colors relative group">
+				<span class="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light mr-1 hidden sm:inline">[</span>
+				Series
+				<span class="opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light ml-1 hidden sm:inline">]</span>
+			</a>
+			<a href="/over-mij" class="hover:text-gray-900 transition-colors relative group">
+				<span class="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light mr-1 hidden sm:inline">[</span>
+				Over mij
+				<span class="opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light ml-1 hidden sm:inline">]</span>
+			</a>
+			<a href="https://instagram.com/jasperschutt" target="_blank" rel="noopener noreferrer" class="hover:text-gray-900 transition-colors relative group">
+				<span class="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light mr-1 hidden sm:inline">[</span>
+				<span class="sm:hidden">IG</span>
+				<span class="hidden sm:inline">Instagram</span>
+				<span class="opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light ml-1 hidden sm:inline">]</span>
+			</a>
+		</div>
+	</header>
+
+	<main class="w-full pt-32 pb-24 px-6 sm:px-10 max-w-3xl mx-auto min-h-screen">
+		<div class="animate-fade-in-slow">
+			<h1 class="text-sm uppercase tracking-widest text-gray-900 mb-12 font-medium">Privacy Policy</h1>
+			
+			<div class="space-y-8 text-gray-600 font-light leading-relaxed">
+				<section>
+					<h2 class="text-xs uppercase tracking-widest text-gray-400 font-medium mb-3">1. Gegevensverwerking Contactformulier</h2>
+					<p class="text-sm sm:text-base">
+						Wanneer u gebruik maakt van het contactformulier op deze website, verwerken wij de door u ingevulde persoonsgegevens (uw naam en e-mailadres) alsmede de inhoud van uw bericht. Deze verwerking vindt uitsluitend plaats met het doel om uw ingediende verzoek of vraag in behandeling te nemen en hierover contact met u op te kunnen nemen.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-xs uppercase tracking-widest text-gray-400 font-medium mb-3">2. Grondslag van de verwerking</h2>
+					<p class="text-sm sm:text-base">
+						De verwerking van deze gegevens is gebaseerd op uw toestemming (artikel 6 lid 1 sub a AVG). Door het formulier in te vullen en op verzenden te klikken, geeft u uitdrukkelijk toestemming voor het verwerken van uw persoonsgegevens voor het hierboven omschreven doel.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-xs uppercase tracking-widest text-gray-400 font-medium mb-3">3. Bewaartermijn</h2>
+					<p class="text-sm sm:text-base">
+						Wij bewaren uw persoonsgegevens niet langer dan strikt noodzakelijk is om de doelen te realiseren waarvoor uw gegevens worden verzameld. Zodra het contact dat is voortgevloeid uit uw bericht via het formulier is afgerond en uw gegevens niet langer nodig zijn (en er geen wettelijke bewaarplicht van toepassing is), worden uw persoonsgegevens definitief verwijderd uit onze systemen.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="text-xs uppercase tracking-widest text-gray-400 font-medium mb-3">4. Derden en Beveiliging</h2>
+					<p class="text-sm sm:text-base">
+						Het sturen van berichten via ons formulier verloopt beveiligd. Uw gegevens worden vertrouwelijk behandeld en worden niet aan derden verstrekt voor commerciële doeleinden. 
+					</p>
+				</section>
+				
+				<p class="text-xs text-gray-400 pt-8 border-t border-gray-100">
+					Laatst gewijzigd: {new Date().toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
+				</p>
+			</div>
+		</div>
+	</main>
+
+	<footer class="w-full flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 px-6 py-8 border-t border-gray-100 bg-white mt-auto">
+		<p class="text-xs text-gray-400 tracking-wider font-light text-center">
+			&copy; {new Date().getFullYear()} Jasper Schut. Fotografie.
+		</p>
+		<span class="hidden sm:inline text-gray-200">|</span>
+		<a href="/privacy" class="text-xs text-gray-400 hover:text-gray-900 tracking-wider font-light transition-colors text-center">
+			Privacy Policy
+		</a>
+	</footer>
+</Layout>
+
+<style>
+	@keyframes fadeInSlow {
+		from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+		to { opacity: 1; transform: translateY(0); filter: blur(0); }
+	}
+	.animate-fade-in-slow {
+		animation: fadeInSlow 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+	}
+</style>

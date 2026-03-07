@@ -134,6 +134,26 @@ img {
         animation: subtleShutterClip 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     */
+
+    /* Instagram Gradient Hover Effects */
+    .group:hover .ig-icon {
+        stroke: url(#ig-gradient);
+    }
+
+    .ig-icon {
+        transition: stroke 0.3s ease;
+    }
+
+    .ig-text {
+        transition: background 0.3s ease, -webkit-text-fill-color 0.3s ease;
+    }
+
+    .group:hover .ig-text {
+        background: linear-gradient(to right, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 }
 
 /* Fade on scroll */

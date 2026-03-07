@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
 
 // A mix of portrait and landscape images as scraped
 const images = [
@@ -15,34 +16,8 @@ const images = [
 ---
 
 <Layout title="Jasper Schut | Straatfotograaf & Documentair Portfolio">
-	<!-- Fixed Header/Nav -->
-	<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 sm:px-10 sm:py-6 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100">
-		<a href="/" class="group flex items-center gap-3 transition-transform duration-500">
-			<span class="relative text-xl sm:text-2xl font-semibold tracking-widest text-gray-900 uppercase flex items-center transition-all duration-500 overflow-hidden group-hover:tracking-[0.14em] group-hover:scale-[1.02] whitespace-nowrap">
-				<span class="opacity-100 translate-x-0 sm:opacity-0 sm:-translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 mr-1 text-gray-400 font-light">[</span>
-				<span class="logo-shutter-text">Jasper Schut</span>
-				<span class="opacity-100 translate-x-0 sm:opacity-0 sm:translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ml-1 text-gray-400 font-light">]</span>
-			</span>
-		</a>
-		<div class="flex items-center gap-4 sm:gap-8">
-			<a href="/series" class="group text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors flex items-center relative">
-				<span class="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light mr-1">[</span>
-				Series
-				<span class="opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light ml-1">]</span>
-			</a>
-			<a href="/over-mij" class="group text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors flex items-center relative whitespace-nowrap">
-				<span class="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light mr-1">[</span>
-				Over mij
-				<span class="opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light ml-1">]</span>
-			</a>
-			<a href="https://instagram.com/jas.perspectives" target="_blank" rel="noopener noreferrer" class="group text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors flex items-center gap-2 relative">
-				<span class="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light mr-1">[</span>
-				<svg class="ig-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-				<span class="hidden sm:inline ig-text">Instagram</span>
-				<span class="opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-400 font-light ml-1">]</span>
-			</a>
-		</div>
-	</header>
+	<!-- Reusable Header Component -->
+	<Header />
 
 	<main class="w-full">
 		<!-- Hero Section -->

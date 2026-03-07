@@ -35,14 +35,14 @@ import Layout from '../layouts/Layout.astro';
 
 	<main class="w-full pt-32 pb-24 px-6 sm:px-10 max-w-7xl mx-auto min-h-screen">
 		
-		<!-- 2-Column Layout -->
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 w-full">
+		<!-- Stacked Horizontal Blocks Layout -->
+		<div class="flex flex-col gap-24 lg:gap-32 w-full">
 			
-			<!-- Left Column: Portrait & Gear -->
-			<div class="w-full flex flex-col gap-12 animate-fade-in-slow">
-				<!-- Smaller Portrait Container -->
-				<div class="max-w-sm w-full">
-					<div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm relative group">
+			<!-- Block 1: Bio (Fades in on load) -->
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center animate-fade-in-slow">
+				<!-- Portrait Left -->
+				<div class="w-full max-w-md mx-auto md:mx-0">
+					<div class="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm relative group shadow-sm">
 						<img 
 							src="/images/portrait-jasper.jpg" 
 							alt="Portret Jasper Schut" 
@@ -51,56 +51,61 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 				</div>
 
-				<!-- Gear Section (Moved here) -->
-				<div class="w-full border-t border-gray-100 pt-8 max-w-xl">
-					<h2 class="text-sm uppercase tracking-widest text-gray-900 mb-6 font-medium">Materialen / Gear</h2>
+				<!-- Bio Text Right -->
+				<div class="w-full flex flex-col justify-center">
+					<p class="text-lg md:text-xl text-gray-900 font-light leading-relaxed mb-6">
+						Jasper Schut is een straatfotograaf gevestigd in Zoetermeer.
+					</p>
+					<p class="text-base sm:text-lg text-gray-600 font-light leading-relaxed mb-6">
+						Met een scherp oog voor compositie en timing legt hij het alledaagse vast op een manier die verder kijkt dan het oppervlak. Zijn werk kenmerkt zich door een directe, ongeposeerde stijl — gedreven door nieuwsgierigheid naar de mens en de stad.
+					</p>
+					<p class="text-base sm:text-lg text-gray-600 font-light leading-relaxed">
+						Jasper is beschikbaar voor opdrachten, samenwerkingen en publicaties.
+					</p>
+				</div>
+			</div>
+
+			<hr class="border-gray-100 w-1/3 mx-auto fade-up-element opacity-0" />
+
+			<!-- Block 2: Gear (Fades in on scroll) -->
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center fade-up-element opacity-0">
+				<!-- Gear List Left -->
+				<div class="w-full flex flex-col justify-center order-2 md:order-1">
+					<h2 class="text-sm uppercase tracking-widest text-gray-900 mb-8 font-medium">Materialen / Gear</h2>
 					
-					<div class="flex flex-col gap-8 items-start">
-						<div class="w-full">
-							<ul class="space-y-4">
-								<li class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline border-b border-gray-50 pb-2">
-									<span class="text-xs text-gray-400 uppercase tracking-widest mb-1 sm:mb-0">Digitale Camera</span>
-									<span class="text-gray-900 font-light">Sony CyberShot RX100 VII</span>
-								</li>
-								<li class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline border-b border-gray-50 pb-2">
-									<span class="text-xs text-gray-400 uppercase tracking-widest mb-1 sm:mb-0">Analoge Camera</span>
-									<span class="text-gray-900 font-light">Canon AE-1 Program</span>
-								</li>
-								<li class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline border-b border-gray-50 pb-2">
-									<span class="text-xs text-gray-400 uppercase tracking-widest mb-1 sm:mb-0">Accessoires</span>
-									<span class="text-gray-900 font-light">Peak Design Slide Lite, SanDisk Extreme Pro</span>
-								</li>
-							</ul>
-						</div>
-						
-						<div class="w-full sm:w-48 lg:w-56 shrink-0 mt-2">
-							<div class="aspect-[4/3] overflow-hidden bg-gray-50 rounded-sm border border-gray-100 shadow-sm opacity-90 hover:opacity-100 transition-opacity">
-								<img 
-									src="/images/gear-sony-rx100.jpg" 
-									alt="Sony RX100 VII Gear" 
-									class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-								/>
-							</div>
-						</div>
+					<ul class="space-y-6">
+						<li class="flex flex-col border-b border-gray-50 pb-4">
+							<span class="text-xs text-gray-400 uppercase tracking-widest mb-2">Digitale Camera</span>
+							<span class="text-lg text-gray-900 font-light">Sony CyberShot RX100 VII</span>
+						</li>
+						<li class="flex flex-col border-b border-gray-50 pb-4">
+							<span class="text-xs text-gray-400 uppercase tracking-widest mb-2">Analoge Camera</span>
+							<span class="text-lg text-gray-900 font-light">Canon AE-1 Program</span>
+						</li>
+						<li class="flex flex-col border-b border-gray-50 pb-4">
+							<span class="text-xs text-gray-400 uppercase tracking-widest mb-2">Accessoires</span>
+							<span class="text-lg text-gray-900 font-light">Peak Design Slide Lite, SanDisk Extreme Pro</span>
+						</li>
+					</ul>
+				</div>
+				
+				<!-- Gear Photo Right -->
+				<div class="w-full max-w-sm mx-auto md:mx-0 order-1 md:order-2">
+					<div class="aspect-[4/3] overflow-hidden bg-gray-50 rounded-sm border border-gray-100 shadow-sm transition-opacity">
+						<img 
+							src="/images/gear-sony-rx100.jpg" 
+							alt="Sony RX100 VII Gear" 
+							class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 opacity-90 hover:opacity-100"
+						/>
 					</div>
 				</div>
 			</div>
 
-			<!-- Right Column: Text & Contact -->
-			<div class="w-full flex flex-col max-w-xl animate-fade-in-delayed">
-				
-				<p class="text-lg text-gray-600 font-light leading-relaxed mb-4">
-					Jasper Schut is een straatfotograaf gevestigd in Zoetermeer.
-				</p>
-				<p class="text-base sm:text-lg text-gray-600 font-light leading-relaxed mb-4">
-					Met een scherp oog voor compositie en timing legt hij het alledaagse vast op een manier die verder kijkt dan het oppervlak. Zijn werk kenmerkt zich door een directe, ongeposeerde stijl — gedreven door nieuwsgierigheid naar de mens en de stad.
-				</p>
-				<p class="text-base sm:text-lg text-gray-600 font-light leading-relaxed mb-12">
-					Jasper is beschikbaar voor opdrachten, samenwerkingen en publicaties. Neem gerust contact op via onderstaand formulier.
-				</p>
+			<hr class="border-gray-100 w-1/3 mx-auto fade-up-element opacity-0" />
 
-				<!-- Contact Form Wrapper (Moved up) -->
-				<div class="bg-gray-50 border border-gray-100 p-8 sm:p-10 rounded-sm shadow-sm relative overflow-hidden">
+			<!-- Block 3: Contact (Fades in on scroll) -->
+			<div class="w-full max-w-2xl mx-auto fade-up-element opacity-0 mb-12">
+				<div class="bg-gray-50 border border-gray-100 p-8 sm:p-12 rounded-sm shadow-sm relative overflow-hidden">
 					<div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none"></div>
 
 					<h2 class="text-sm uppercase tracking-widest text-gray-900 mb-6 font-medium relative z-10">Neem contact op</h2>
@@ -168,6 +173,7 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
+	// Handle form success message
 	if (new URLSearchParams(window.location.search).has('verzonden')) {
 		const msg = document.getElementById('form-success');
 		if (msg) {
@@ -180,4 +186,22 @@ import Layout from '../layouts/Layout.astro';
 		// Clean up URL
 		window.history.replaceState({}, '', '/over-mij');
 	}
+
+	// Handle scroll animations for fade-up elements
+	const fadeUpObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('is-visible');
+				fadeUpObserver.unobserve(entry.target); // Only animate once
+			}
+		});
+	}, {
+		root: null,
+		threshold: 0.1,
+		rootMargin: "0px 0px -50px 0px"
+	});
+
+	document.querySelectorAll('.fade-up-element').forEach(el => {
+		fadeUpObserver.observe(el);
+	});
 </script>

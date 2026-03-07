@@ -34,10 +34,22 @@ img {
 
     .masonry-item {
         break-inside: avoid;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.75rem;
         display: inline-block;
         width: 100%;
         cursor: zoom-in;
+    }
+
+    @media (min-width: 640px) {
+        .masonry-item {
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .masonry-item {
+            margin-bottom: 1.5rem;
+        }
     }
 
     .hover-trigger {

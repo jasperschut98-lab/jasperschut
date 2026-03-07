@@ -135,13 +135,13 @@ img {
     }
     */
 
-    /* Instagram Gradient Hover Effects */
-    .group:hover .ig-icon {
-        stroke: url(#ig-gradient);
+    /* Instagram Gradient Hover Effects - Bidirectional smoothing */
+    .ig-icon {
+        transition: stroke 0.4s ease-in-out;
     }
 
-    .ig-icon {
-        transition: stroke 0.3s ease;
+    .group:hover .ig-icon {
+        stroke: url(#ig-gradient);
     }
 
     .ig-text {
@@ -149,11 +149,13 @@ img {
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: currentColor;
-        transition: -webkit-text-fill-color 0.4s ease;
+        /* Base state uses parent color */
+        transition: -webkit-text-fill-color 0.4s ease-in-out;
     }
 
     .group:hover .ig-text {
         -webkit-text-fill-color: transparent;
+        /* Hover state shows background gradient */
     }
 }
 

@@ -40,8 +40,12 @@ const images = imageFiles.map((file: string) => {
 			<div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-80 z-0"></div>
 			
 			<div class="z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
-				<h1 id="hero-title" class="text-3xl sm:text-5xl md:text-7xl font-extralight tracking-tight mb-4 animate-fade-in-slow text-gray-900 will-change-transform">
-					<em class="italic">Street</em> life.
+				<h1 id="hero-title" class="text-3xl sm:text-5xl md:text-7xl font-extralight tracking-tight mb-4 animate-fade-in-slow text-gray-900 will-change-transform italic">
+					<span class="relative inline-block">
+						Street
+						<span id="hero-underline" class="absolute bottom-0 left-0 w-full h-[1px] md:h-[2px] bg-gray-900 origin-left scale-x-0 transition-transform duration-75"></span>
+					</span> 
+					life.
 				</h1>
 			</div>
 		</section>
@@ -210,12 +214,15 @@ const images = imageFiles.map((file: string) => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
 
-	// 4. Hero Title Scroll Effect (Parallax & Fade)
+	// 4. Hero Title Scroll Effect (Parallax, Fade & Underline)
 	const heroTitle = document.getElementById('hero-title');
+	const heroUnderline = document.getElementById('hero-underline');
+	
 	window.addEventListener('scroll', () => {
+		const scrolled = window.scrollY;
+		
+		// 4a. Parallax and Fade for the whole title
 		if (heroTitle) {
-			const scrolled = window.scrollY;
-			// Increased rate and negative value to move it UP faster than the scroll
 			const rate = scrolled * -0.5; 
 			const opacity = 1 - (scrolled / 500);
 			
@@ -223,6 +230,13 @@ const images = imageFiles.map((file: string) => {
 				heroTitle.style.transform = `translate3d(0, ${rate}px, 0)`;
 				heroTitle.style.opacity = Math.max(opacity, 0).toString();
 			}
+		}
+
+		// 4b. Sync Underline width with scroll
+		if (heroUnderline) {
+			// Underline finishes growing at 200px scroll
+			const progress = Math.min(scrolled / 200, 1);
+			heroUnderline.style.transform = `scaleX(${progress})`;
 		}
 	});
 </script>

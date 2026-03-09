@@ -35,7 +35,7 @@ const images = imageFiles.map((file: string) => {
 
 	<main class="w-full">
 		<!-- Hero Section -->
-		<section class="relative min-h-[30vh] flex flex-col items-center justify-center px-4 pt-32 pb-4 sm:pt-40 sm:pb-6 overflow-hidden">
+		<section class="relative min-h-[40vh] flex flex-col items-center justify-center px-4 pt-32 pb-8 sm:pt-40 sm:pb-12 overflow-hidden">
 			<!-- Subtle background gradient/grain for premium feel -->
 			<div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-80 z-0"></div>
 			
@@ -223,20 +223,19 @@ const images = imageFiles.map((file: string) => {
 		
 		// 4a. Parallax and Fade for the whole title
 		if (heroTitle) {
-			// Slightly slower parallax so it stays in view while underline forms
-			const rate = scrolled * -0.3; 
-			const opacity = 1 - (scrolled / 500);
+			// Positive rate means the title scrolls slower than the rest of the page,
+			// effectively keeping it visible longer!
+			const rate = scrolled * 0.6; 
+			const opacity = 1 - (scrolled / 400);
 			
-			if (scrolled <= 600) {
-				heroTitle.style.transform = `translate3d(0, ${rate}px, 0)`;
-				heroTitle.style.opacity = Math.max(opacity, 0).toString();
-			}
+			heroTitle.style.transform = `translate3d(0, ${rate}px, 0)`;
+			heroTitle.style.opacity = Math.max(opacity, 0).toString();
 		}
 
 		// 4b. Sync Underline width with scroll
 		if (heroUnderline) {
-			// Underline now finishes growing much faster (at 100px scroll)
-			const progress = Math.min(scrolled / 100, 1);
+			// Underline full width at 150px
+			const progress = Math.min(scrolled / 150, 1);
 			heroUnderline.style.transform = `scaleX(${progress})`;
 		}
 	});

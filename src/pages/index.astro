@@ -54,7 +54,7 @@ const images = imageFiles.map((file: string) => {
 			<div class="masonry-grid mt-2">
 				{images.map((image) => {
 					return (
-					<div class="masonry-item overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500 fade-up-element">
+					<div class="masonry-item overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500 fade-up-element cursor-zoom-in">
 						<img 
 							src={image.src} 
 							alt={image.alt} 
@@ -62,15 +62,6 @@ const images = imageFiles.map((file: string) => {
 							class="gallery-image w-full h-auto object-cover transition-all duration-700 group-hover:scale-[1.03]" 
 							data-full={image.src}
 						/>
-						<!-- Magnifying glass overlay on hover -->
-						<div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-500 pointer-events-none">
-							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-lg scale-90 group-hover:scale-100">
-								<circle cx="11" cy="11" r="8"/>
-								<path d="m21 21-4.3-4.3"/>
-								<path d="M11 8v6"/>
-								<path d="M8 11h6"/>
-							</svg>
-						</div>
 					</div>
 					);
 				})}

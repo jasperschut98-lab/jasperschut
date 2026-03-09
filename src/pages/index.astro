@@ -40,12 +40,9 @@ const images = imageFiles.map((file: string) => {
 			<div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-80 z-0"></div>
 			
 			<div class="z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
-				<h1 class="text-3xl sm:text-5xl md:text-7xl font-extralight tracking-tight mb-4 animate-fade-in-slow text-gray-900">
+				<h1 id="hero-title" class="text-3xl sm:text-5xl md:text-7xl font-extralight tracking-tight mb-4 animate-fade-in-slow text-gray-900 will-change-transform">
 					Street life.
 				</h1>
-				<p class="text-base sm:text-lg text-gray-500 font-light max-w-xl leading-relaxed animate-fade-in-delayed px-4">
-					Het ongefilterde leven, vastgelegd in een fractie van een seconde. Een visuele verkenning van de dynamiek, stilte en menselijke verhalen op straat.
-				</p>
 			</div>
 		</section>
 
@@ -211,5 +208,20 @@ const images = imageFiles.map((file: string) => {
 
 	backToTopBtn?.addEventListener('click', () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+
+	// 4. Hero Title Scroll Effect (Parallax & Fade)
+	const heroTitle = document.getElementById('hero-title');
+	window.addEventListener('scroll', () => {
+		if (heroTitle) {
+			const scrolled = window.scrollY;
+			const rate = scrolled * 0.35;
+			const opacity = 1 - (scrolled / 400);
+			
+			if (scrolled <= 500) {
+				heroTitle.style.transform = `translate3d(0, ${rate}px, 0)`;
+				heroTitle.style.opacity = Math.max(opacity, 0).toString();
+			}
+		}
 	});
 </script>

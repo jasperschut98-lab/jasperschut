@@ -218,6 +218,14 @@ const images = imageFiles.map((file: string) => {
 	const heroTitle = document.getElementById('hero-title');
 	const heroUnderline = document.getElementById('hero-underline');
 	
+	if (heroTitle) {
+		// Remove the CSS animation class after it completes, so it doesn't 
+		// "lock" the opacity and transform with its 'forwards' fill mode
+		heroTitle.addEventListener('animationend', () => {
+			heroTitle.classList.remove('animate-fade-in-slow');
+		}, { once: true });
+	}
+
 	window.addEventListener('scroll', () => {
 		const scrolled = window.scrollY;
 		

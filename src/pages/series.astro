@@ -1,13 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import fs from 'node:fs';
+import path from 'node:path';
 
-const series = [
-	{ title: 'Maastricht', image: '/images/homepage/019-1024x683.jpg', count: 24 },
-	{ title: 'Straatfotografie', image: '/images/homepage/imm028_N28-1024x683.jpg', count: 41 },
-	{ title: 'Zwart-Wit', image: '/images/homepage/IMG_0143-768x1024.jpeg', count: 18 },
-	{ title: 'Portret', image: '/images/homepage/IMG_4346-1024x768.jpeg', count: 12 }
-];
+// Dynamically scan for series folders in public/images/series/
+const seriesRootDir = path.join(process.cwd(), 'public', 'images', 'series');
+const allowedExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
+
+let series = [];
+
+if (fs.existsSync(seriesRootDir)) {
+	const folders = fs.readdirSync(seriesRootDir, { withFileTypes: true })
+		.filter(dirent => dirent.isDirectory())
+		.map(dirent => dirent.name);
+
+	series = folders.map(folder => {
+		const folderPath = path.join(seriesRootDir, folder);
+		const images = fs.readdirSync(folderPath)
+			.filter(file => {
+				const ext = path.extname(file).toLowerCase();
+				return allowedExtensions.includes(ext) && !file.startsWith('.');
+			})
+			.sort();
+
+		// Use the first image as cover, or a fallback if empty
+		const coverImage = images.length > 0 
+			? `/images/series/${folder}/${images[0]}`
+			: '/images/logo.png';
+
+		return {
+			title: folder.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+			slug: folder.toLowerCase().replace(/\s+/g, '-'),
+			image: coverImage,
+			count: images.length
+		};
+	});
+}
 ---
 
 <Layout title="Fotoseries | Jasper Schut Fotografie" description="Bekijk de fotoseries en mappen van Jasper Schut.">
@@ -24,7 +53,7 @@ const series = [
 		<!-- Folders / Series Grid -->
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-[1200px] mx-auto">
 			{series.map((item, index) => (
-				<a href="#" class="group block relative overflow-hidden bg-gray-100 aspect-[4/3] animate-fade-in-delayed shadow-sm hover:shadow-lg transition-all duration-500 rounded-sm" style={`animation-delay: ${index * 150}ms`}>
+				<a href={`/series/${item.slug}`} class="group block relative overflow-hidden bg-gray-100 aspect-[4/3] animate-fade-in-delayed shadow-sm hover:shadow-lg transition-all duration-500 rounded-sm" style={`animation-delay: ${index * 150}ms`}>
 					<!-- Folder Cover Image -->
 					<img 
 						src={item.image} 

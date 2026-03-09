@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+	const seriesRootDir = path.join(process.cwd(), 'public', 'images', 'series');
+	
+	if (!fs.existsSync(seriesRootDir)) return [];
+
+	const folders = fs.readdirSync(seriesRootDir, { withFileTypes: true })
+		.filter(dirent => dirent.isDirectory())
+		.map(dirent => dirent.name);
+
+	return folders.map(folder => ({
+		params: { slug: folder.toLowerCase().replace(/\s+/g, '-') },
+		props: { folderName: folder }
+	}));
+}
+
+const { slug } = Astro.params;
+const { folderName } = Astro.props;
+
+const seriesRootDir = path.join(process.cwd(), 'public', 'images', 'series');
+const folderPath = path.join(seriesRootDir, folderName);
+const allowedExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
+
+const imageFiles = fs.readdirSync(folderPath)
+	.filter(file => {
+		const ext = path.extname(file).toLowerCase();
+		return allowedExtensions.includes(ext) && !file.startsWith('.');
+	})
+	.sort();
+
+const images = imageFiles.map(file => {
+	const name = path.basename(file, path.extname(file))
+		.replace(/[-_]/g, ' ')
+		.replace(/\d+x\d+/g, '')
+		.replace(/\s+/g, ' ')
+		.trim();
+	return {
+		src: `/images/series/${folderName}/${file}`,
+		alt: `Foto uit serie ${folderName} door Jasper Schut — ${name}`
+	};
+});
+
+const title = folderName.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+---
+
+<Layout title={`${title} | Jasper Schut Fotografie`} description={`Bekijk de fotoserie ${title} door Jasper Schut.`}>
+	<Header />
+
+	<main class="w-full pt-32 pb-24 px-4 sm:px-6 md:px-8 max-w-[1600px] mx-auto min-h-screen">
+		
+		<div class="mb-16 animate-fade-in-slow text-center">
+			<a href="/series" class="text-xs uppercase tracking-widest text-gray-400 hover:text-gray-900 transition-colors mb-4 inline-block">← Terug naar overzicht</a>
+			<h1 class="text-3xl sm:text-5xl font-light mb-4 text-gray-900">{title}</h1>
+			<p class="text-gray-500 font-light max-w-xl mx-auto">{images.length} beelden vastgelegd in deze collectie.</p>
+		</div>
+
+		<!-- Photo Gallery (Masonry) -->
+		<section id="gallery" class="relative z-20 pb-20">
+			<div class="masonry-grid mt-2">
+				{images.map((image) => (
+					<div class="masonry-item overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500 fade-up-element cursor-zoom-in">
+						<img 
+							src={image.src} 
+							alt={image.alt} 
+							loading="lazy"
+							class="gallery-image w-full h-auto object-cover transition-all duration-700 group-hover:scale-[1.03]" 
+							data-full={image.src}
+						/>
+					</div>
+				))}
+			</div>
+		</section>
+
+	</main>
+
+	<!-- Lightbox Overlay -->
+	<div id="lightbox" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center cursor-zoom-out p-4 md:p-12">
+		<img id="lightbox-img" src="" alt="Geopende Foto" class="max-h-[90vh] max-w-[90vw] object-contain select-none transition-transform duration-300 scale-95 cursor-zoom-out" />
+	</div>
+
+	<!-- Footer -->
+	<footer class="w-full flex justify-center items-center gap-3 px-6 py-8 border-t border-gray-100 bg-white mt-auto">
+		<p class="text-xs text-gray-400 tracking-wider font-light m-0">
+			&copy; {new Date().getFullYear()} Jasper Schut. Fotografie.
+		</p>
+		<span class="text-xs text-gray-200 font-light translate-y-[-1px]">|</span>
+		<a href="/privacy" class="text-xs text-gray-400 hover:text-gray-900 tracking-wider font-light transition-colors m-0">
+			Privacy Policy
+		</a>
+	</footer>
+</Layout>
+
+<style>
+	@keyframes fadeInSlow {
+		from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+		to { opacity: 1; transform: translateY(0); filter: blur(0); }
+	}
+	.animate-fade-in-slow {
+		animation: fadeInSlow 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+	}
+	.fade-up-element {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+	}
+	.fade-up-element.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>
+
+<script>
+	// 1. Smooth Scroll Fade-up
+	const fadeUpObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('is-visible');
+				fadeUpObserver.unobserve(entry.target);
+			}
+		});
+	}, { threshold: 0.1 });
+
+	document.querySelectorAll('.fade-up-element').forEach(el => fadeUpObserver.observe(el));
+
+	// 2. Lightbox Logic
+	const galleryImages = document.querySelectorAll('.gallery-image');
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+
+	galleryImages.forEach(img => {
+		img.addEventListener('click', (e) => {
+			if(lightbox && lightboxImg) {
+				const src = (e.target as HTMLElement).getAttribute('data-full');
+				if (src) lightboxImg.setAttribute('src', src);
+				lightbox.classList.remove('hidden');
+				requestAnimationFrame(() => {
+					lightbox.classList.remove('opacity-0');
+					lightboxImg.classList.remove('scale-95');
+					lightboxImg.classList.add('scale-100');
+				});
+				document.body.style.overflow = 'hidden';
+			}
+		});
+	});
+
+	const closeLightbox = () => {
+		if(lightbox && lightboxImg) {
+			lightbox.classList.add('opacity-0');
+			lightboxImg.classList.remove('scale-100');
+			lightboxImg.classList.add('scale-95');
+			setTimeout(() => {
+				lightbox.classList.add('hidden');
+				lightboxImg.setAttribute('src', '');
+				document.body.style.overflow = '';
+			}, 300);
+		}
+	};
+
+	if(lightbox) lightbox.addEventListener('click', closeLightbox);
+	document.addEventListener('keydown', (e) => {
+		if(e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) closeLightbox();
+	});
+</script>

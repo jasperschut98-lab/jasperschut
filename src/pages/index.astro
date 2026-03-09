@@ -41,7 +41,7 @@ const images = imageFiles.map((file: string) => {
 			
 			<div class="z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
 				<h1 id="hero-title" class="text-3xl sm:text-5xl md:text-7xl font-extralight tracking-tight mb-4 animate-fade-in-slow text-gray-900 will-change-transform">
-					Street life.
+					<em class="italic">Street</em> life.
 				</h1>
 			</div>
 		</section>
@@ -215,10 +215,11 @@ const images = imageFiles.map((file: string) => {
 	window.addEventListener('scroll', () => {
 		if (heroTitle) {
 			const scrolled = window.scrollY;
-			const rate = scrolled * 0.35;
-			const opacity = 1 - (scrolled / 400);
+			// Increased rate and negative value to move it UP faster than the scroll
+			const rate = scrolled * -0.5; 
+			const opacity = 1 - (scrolled / 500);
 			
-			if (scrolled <= 500) {
+			if (scrolled <= 600) {
 				heroTitle.style.transform = `translate3d(0, ${rate}px, 0)`;
 				heroTitle.style.opacity = Math.max(opacity, 0).toString();
 			}

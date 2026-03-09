@@ -43,7 +43,7 @@ const images = imageFiles.map((file: string) => {
 				<h1 id="hero-title" class="text-3xl sm:text-5xl md:text-7xl font-extralight tracking-tight mb-4 animate-fade-in-slow text-gray-900 will-change-transform italic">
 					<span class="relative inline-block">
 						Street
-						<span id="hero-underline" class="absolute bottom-0 left-0 w-full h-[1px] md:h-[2px] bg-gray-900 origin-left scale-x-0 transition-transform duration-75"></span>
+						<span id="hero-underline" class="absolute bottom-0 left-0 w-full h-[1px] md:h-[2px] bg-gray-900 origin-left scale-x-0"></span>
 					</span> 
 					life.
 				</h1>
@@ -223,7 +223,8 @@ const images = imageFiles.map((file: string) => {
 		
 		// 4a. Parallax and Fade for the whole title
 		if (heroTitle) {
-			const rate = scrolled * -0.5; 
+			// Slightly slower parallax so it stays in view while underline forms
+			const rate = scrolled * -0.3; 
 			const opacity = 1 - (scrolled / 500);
 			
 			if (scrolled <= 600) {
@@ -234,8 +235,8 @@ const images = imageFiles.map((file: string) => {
 
 		// 4b. Sync Underline width with scroll
 		if (heroUnderline) {
-			// Underline finishes growing at 200px scroll
-			const progress = Math.min(scrolled / 200, 1);
+			// Underline now finishes growing much faster (at 100px scroll)
+			const progress = Math.min(scrolled / 100, 1);
 			heroUnderline.style.transform = `scaleX(${progress})`;
 		}
 	});

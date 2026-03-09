@@ -1,18 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import fs from 'node:fs';
+import path from 'node:path';
 
-// A mix of portrait and landscape images as scraped
-const images = [
-  { src: '/images/IMG_0143-768x1024.jpeg', alt: 'Zwart-wit portretfotografie op straat door Jasper Schut' },
-  { src: '/images/019-1024x683.jpg', alt: 'Straatbeeld Maastricht — documentaire fotografie' },
-  { src: '/images/IMG_0135-768x1024.jpeg', alt: 'Artistiek portret vastgelegd op de straat' },
-  { src: '/images/imm012_N12-1024x683.jpg', alt: 'Natuurlijke momenten en composities' },
-  { src: '/images/imm018_20-1024x683.jpg', alt: 'Minimalistische fotografie van het alledaagse' },
-  { src: '/images/imm028_N28-1024x683.jpg', alt: 'Documentair straatbeeld door Jasper Schut' },
-  { src: '/images/imm021_N21-1024x683.jpg', alt: 'Sfeervolle straatfotografie' },
-  { src: '/images/IMG_4346-1024x768.jpeg', alt: 'Landschappen door de ogen van een straatfotograaf' }
-];
+// Dynamically read all images from public/images/homepage
+const homepageDir = path.join(process.cwd(), 'public', 'images', 'homepage');
+const allowedExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
+
+const imageFiles = fs.readdirSync(homepageDir)
+  .filter((file: string) => {
+    const ext = path.extname(file).toLowerCase();
+    return allowedExtensions.includes(ext) && !file.startsWith('.');
+  })
+  .sort();
+
+const images = imageFiles.map((file: string) => {
+  // Generate a readable alt text from the filename
+  const name = path.basename(file, path.extname(file))
+    .replace(/[-_]/g, ' ')
+    .replace(/\d+x\d+/g, '')       // strip resolution suffixes like 1024x683
+    .replace(/\s+/g, ' ')
+    .trim();
+  return {
+    src: `/images/homepage/${file}`,
+    alt: `Straatfotografie door Jasper Schut — ${name}`,
+  };
+});
 ---
 
 <Layout title="Jasper Schut | Straatfotograaf & Documentair Portfolio">

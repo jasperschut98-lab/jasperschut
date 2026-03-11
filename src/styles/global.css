@@ -28,7 +28,8 @@ img {
     @media (min-width: 1024px) {
         .masonry-grid {
             column-count: 3;
-            column-gap: 1.5rem;
+            column-gap: 2rem;
+            column-fill: auto;
         }
     }
 

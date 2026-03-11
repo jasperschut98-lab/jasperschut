@@ -17,19 +17,24 @@ const imageFiles = fs.readdirSync(homepageDir)
 // Define a specific order for a beautiful masonry grid
 // Alternating between portrait and landscape for better flow
 const preferredOrder = [
+  // Column 1 (approx 5 items) - Balanced mix
   'DSC00323.jpg',       // Portrait (New)
   'imm012_N12-1024x683.jpg', // Landscape
   'DSC00286.jpg',       // Portrait (New)
   'imm018_20-1024x683.jpg', // Landscape
   'DSC00313.jpg',       // Portrait (New)
+
+  // Column 2 (approx 4 items) - Start with smaller items
   'imm021_N21-1024x683.jpg', // Landscape
+  '019-1024x683.jpg',   // Landscape (Clumped with above)
   'DSC00266.jpg',       // Portrait
-  'imm028_N28-1024x683.jpg', // Landscape
+  'IMG_4346-1024x768.jpeg', // Landscape
+
+  // Column 3 (approx 4 items) - Tall start
   'DSC00388 kopie.jpg', // Portrait
-  '019-1024x683.jpg',   // Landscape
-  'IMG_0135-768x1024.jpeg', // Portrait (3:4)
-  'IMG_4346-1024x768.jpeg', // Landscape (4:3)
-  'IMG_0143-768x1024.jpeg', // Portrait (3:4)
+  'IMG_0135-768x1024.jpeg', // Portrait (Tall clump)
+  'imm028_N28-1024x683.jpg', // Landscape
+  'IMG_0143-768x1024.jpeg', // Portrait
 ];
 
 const sortedImageFiles = imageFiles.sort((a, b) => {

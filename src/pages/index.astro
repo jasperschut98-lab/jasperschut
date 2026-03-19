@@ -68,13 +68,13 @@ const images = sortedImageFiles.map((file: string) => {
 		<!-- Hero Section -->
 		<section class="relative min-h-[40vh] flex flex-col items-center justify-center px-4 pt-32 pb-8 sm:pt-40 sm:pb-12 overflow-hidden">
 			<!-- Subtle background gradient/grain for premium feel -->
-			<div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-80 z-0"></div>
+			<div class="absolute inset-0 bg-gradient-to-b from-cream-100 to-cream-50 opacity-80 z-0"></div>
 			
 			<div class="z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
 				<h1 id="hero-title" class="text-3xl sm:text-5xl md:text-7xl font-extralight tracking-tight mb-4 animate-fade-in-slow text-gray-900 will-change-transform italic">
 					<span class="relative inline-block">
 						Street
-						<span id="hero-underline" class="absolute bottom-0 left-0 w-full h-[1px] md:h-[2px] bg-gray-900 origin-left scale-x-0"></span>
+						<span id="hero-underline" class="absolute bottom-0 left-0 w-full h-[1px] md:h-[2px] bg-warm-900 origin-left scale-x-0"></span>
 					</span> 
 					life.
 				</h1>
@@ -86,7 +86,7 @@ const images = sortedImageFiles.map((file: string) => {
 			<div class="masonry-grid mt-2">
 				{images.map((image) => {
 					return (
-					<div class="masonry-item overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500 fade-up-element cursor-zoom-in">
+					<div class="masonry-item overflow-hidden bg-cream-100 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500 fade-up-element cursor-zoom-in">
 						<img 
 							src={image.src} 
 							alt={image.alt} 
@@ -102,25 +102,25 @@ const images = sortedImageFiles.map((file: string) => {
 	</main>
 
 	<!-- Footer -->
-	<footer class="w-full flex justify-center items-center gap-3 px-6 py-8 border-t border-gray-100 bg-white">
+	<footer class="w-full flex justify-center items-center gap-3 px-6 py-8 border-t border-cream-200/60 bg-cream-50">
 		<p class="text-xs text-gray-400 tracking-wider font-light m-0">
 			&copy; {new Date().getFullYear()} Jasper Schut. Fotografie.
 		</p>
-		<span class="text-xs text-gray-200 font-light translate-y-[-1px]">|</span>
-		<a href="/privacy" class="text-xs text-gray-400 hover:text-gray-900 tracking-wider font-light transition-colors m-0">
+		<span class="text-xs text-cream-300 font-light translate-y-[-1px]">|</span>
+		<a href="/privacy" class="text-xs text-cream-400 hover:text-warm-900 tracking-wider font-light transition-colors m-0">
 			Privacy Policy
 		</a>
 	</footer>
 
 	<!-- Sticky Navigation Buttons -->
 	<div class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40">
-		<button id="back-to-top" class="opacity-0 translate-y-4 pointer-events-none transition-all duration-500 bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-900 text-gray-900 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full" aria-label="Terug naar boven">
+		<button id="back-to-top" class="opacity-0 translate-y-4 pointer-events-none transition-all duration-500 bg-cream-50 border border-cream-300 shadow-sm hover:shadow-md hover:border-warm-900 text-warm-900 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full" aria-label="Terug naar boven">
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 		</button>
 	</div>
 	
 	<div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40">
-		<a href="/over-mij" class="flex items-center gap-2 bg-gray-900 text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-full shadow-md hover:shadow-lg hover:bg-black transition-all duration-300 text-[10px] sm:text-xs uppercase tracking-widest font-medium">
+		<a href="/over-mij" class="flex items-center gap-2 bg-warm-900 text-cream-50 px-4 py-2.5 sm:px-6 sm:py-3 rounded-full shadow-md hover:shadow-lg hover:bg-black transition-all duration-300 text-[10px] sm:text-xs uppercase tracking-widest font-medium">
 			Contact & Info
 		</a>
 	</div>

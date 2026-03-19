@@ -1,0 +1,36 @@
+npm verbose cli /usr/local/bin/node /usr/local/bin/npm
+npm info using npm@11.9.0
+npm info using node@v24.14.0
+npm verbose title npm install
+npm verbose argv "install" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:/Users/jasper_schut/.npm/_logs/2026-03-19T14_26_21_431Z-
+npm verbose logfile /Users/jasper_schut/.npm/_logs/2026-03-19T14_26_21_431Z-debug-0.log
+npm verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+npm http cache @babel/parser@https://registry.npmjs.org/@babel/parser/-/parser-7.29.0.tgz 0ms (cache hit)
+npm http cache nanoid@https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz 0ms (cache hit)
+npm http cache vite@https://registry.npmjs.org/vite/-/vite-7.3.1.tgz 0ms (cache hit)
+npm http cache astro@https://registry.npmjs.org/astro/-/astro-5.18.1.tgz 0ms (cache hit)
+npm http cache jiti@https://registry.npmjs.org/jiti/-/jiti-2.6.1.tgz 0ms (cache hit)
+npm http cache is-docker@https://registry.npmjs.org/is-docker/-/is-docker-3.0.0.tgz 0ms (cache hit)
+npm http cache acorn@https://registry.npmjs.org/acorn/-/acorn-8.16.0.tgz 0ms (cache hit)
+npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 327ms
+npm http cache https://registry.npmjs.org/devalue 21ms (cache hit)
+npm http cache https://registry.npmjs.org/astro 64ms (cache hit)
+
+changed 7 packages, and audited 297 packages in 922ms
+
+153 packages are looking for funding
+  run `npm fund` for details
+
+1 moderate severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm verbose cwd /Users/jasper_schut/Documents/Websites/jasperschutt
+npm verbose os Darwin 25.3.0
+npm verbose node v24.14.0
+npm verbose npm  v11.9.0
+npm verbose exit 0
+npm info ok

@@ -1,7 +1,15 @@
 @import "tailwindcss";
+@source "../**/*.{astro,html,js,jsx,svelte,ts,tsx,vue}";
 
 @theme {
     --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-cream-50: #FAF7F2;
+    --color-cream-100: #F5F0E8;
+    --color-cream-200: #EBE4D8;
+    --color-cream-300: #D6CBBA;
+    --color-cream-400: #B8A98F;
+    --color-cream-500: #9C8B6E;
+    --color-warm-900: #3D3428;
 }
 
 /* Global Image Protection */
@@ -66,19 +74,16 @@ img {
     }
 
     ::-webkit-scrollbar-track {
-        background: #f9fafb;
-        /* gray-50 */
+        background: var(--color-cream-50);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #d1d5db;
-        /* gray-300 */
+        background: var(--color-cream-300);
         border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #9ca3af;
-        /* gray-400 */
+        background: var(--color-cream-400);
     }
 
     /* Focal Plane Shutter Effect for Logo */
@@ -135,14 +140,7 @@ img {
     }
     */
 
-    /* Instagram Gradient Hover Effects - Bidirectional smoothing */
-    .ig-icon {
-        transition: stroke 0.4s ease-in-out;
-    }
-
-    .group:hover .ig-icon {
-        stroke: url(#ig-gradient);
-    }
+    /* Instagram icon always uses gradient stroke via inline SVG attribute */
 
     .ig-text {
         background: linear-gradient(to right, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);

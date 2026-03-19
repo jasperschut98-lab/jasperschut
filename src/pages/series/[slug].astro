@@ -63,7 +63,7 @@ const title = folderName.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCa
 		<section id="gallery" class="relative z-20 pb-20">
 			<div class="masonry-grid mt-2">
 				{images.map((image) => (
-					<div class="masonry-item overflow-hidden bg-gray-50 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500 fade-up-element cursor-zoom-in">
+					<div class="masonry-item overflow-hidden bg-cream-100 rounded-sm group relative shadow-sm hover:shadow-md transition-shadow duration-500 fade-up-element cursor-zoom-in">
 						<img 
 							src={image.src} 
 							alt={image.alt} 
@@ -84,12 +84,12 @@ const title = folderName.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCa
 	</div>
 
 	<!-- Footer -->
-	<footer class="w-full flex justify-center items-center gap-3 px-6 py-8 border-t border-gray-100 bg-white mt-auto">
+	<footer class="w-full flex justify-center items-center gap-3 px-6 py-8 border-t border-cream-200/60 bg-cream-50 mt-auto">
 		<p class="text-xs text-gray-400 tracking-wider font-light m-0">
 			&copy; {new Date().getFullYear()} Jasper Schut. Fotografie.
 		</p>
-		<span class="text-xs text-gray-200 font-light translate-y-[-1px]">|</span>
-		<a href="/privacy" class="text-xs text-gray-400 hover:text-gray-900 tracking-wider font-light transition-colors m-0">
+		<span class="text-xs text-cream-300 font-light translate-y-[-1px]">|</span>
+		<a href="/privacy" class="text-xs text-cream-400 hover:text-warm-900 tracking-wider font-light transition-colors m-0">
 			Privacy Policy
 		</a>
 	</footer>

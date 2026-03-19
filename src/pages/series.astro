@@ -53,7 +53,7 @@ if (fs.existsSync(seriesRootDir)) {
 		<!-- Folders / Series Grid -->
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-[1200px] mx-auto">
 			{series.map((item, index) => (
-				<a href={`/series/${item.slug}`} class="group block relative overflow-hidden bg-gray-100 aspect-[4/3] animate-fade-in-delayed shadow-sm hover:shadow-lg transition-all duration-500 rounded-sm" style={`animation-delay: ${index * 150}ms`}>
+				<a href={`/series/${item.slug}`} class="group block relative overflow-hidden bg-cream-200 aspect-[4/3] animate-fade-in-delayed shadow-sm hover:shadow-lg transition-all duration-500 rounded-sm" style={`animation-delay: ${index * 150}ms`}>
 					<!-- Folder Cover Image -->
 					<img 
 						src={item.image} 
@@ -83,12 +83,12 @@ if (fs.existsSync(seriesRootDir)) {
 	</main>
 
 	<!-- Footer -->
-	<footer class="w-full flex justify-center items-center gap-3 px-6 py-8 border-t border-gray-100 bg-white mt-auto">
+	<footer class="w-full flex justify-center items-center gap-3 px-6 py-8 border-t border-cream-200/60 bg-cream-50 mt-auto">
 		<p class="text-xs text-gray-400 tracking-wider font-light m-0">
 			&copy; {new Date().getFullYear()} Jasper Schut. Fotografie.
 		</p>
-		<span class="text-xs text-gray-200 font-light translate-y-[-1px]">|</span>
-		<a href="/privacy" class="text-xs text-gray-400 hover:text-gray-900 tracking-wider font-light transition-colors m-0">
+		<span class="text-xs text-cream-300 font-light translate-y-[-1px]">|</span>
+		<a href="/privacy" class="text-xs text-cream-400 hover:text-warm-900 tracking-wider font-light transition-colors m-0">
 			Privacy Policy
 		</a>
 	</footer>

@@ -148,7 +148,7 @@ img {
         background-clip: text;
         -webkit-text-fill-color: currentColor;
         /* Base state uses parent color */
-        transition: -webkit-text-fill-color 0.4s ease-in-out;
+        transition: -webkit-text-fill-color 0.8s ease-in-out;
     }
 
     .group:hover .ig-text {

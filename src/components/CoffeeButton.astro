@@ -1,17 +1,17 @@
 ---
 interface Props {
-	username?: string;
+	url?: string;
 }
 
-const { username = "jasperschut" } = Astro.props;
+const { url = "https://paypal.me/jasperschut" } = Astro.props;
 ---
 
 <a 
-	href={`https://www.buymeacoffee.com/${username}`} 
+	href={url} 
 	target="_blank" 
 	rel="noopener noreferrer"
 	class="flex items-center justify-center bg-cream-100 border border-cream-300 text-warm-900 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-sm hover:shadow-md hover:border-warm-900 transition-all duration-300 group"
-	aria-label="Buy me a coffee"
+	aria-label="Support me"
 >
 	<svg 
 		xmlns="http://www.w3.org/2000/svg" 

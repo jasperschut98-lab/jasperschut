@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CoffeeButton from '../components/CoffeeButton.astro';
 
 interface Props {
 	title: string;
@@ -61,6 +62,14 @@ const jsonLd = {
 	</head>
 	<body class="bg-cream-50 text-gray-900 font-sans antialiased selection:bg-gray-900 selection:text-cream-50">
 		<slot />
+
+		<!-- Sticky Navigation Buttons (Global) -->
+		<div class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 flex flex-col gap-3">
+			<button id="back-to-top" class="opacity-0 translate-y-4 pointer-events-none transition-all duration-500 bg-cream-50 border border-cream-300 shadow-sm hover:shadow-md hover:border-warm-900 text-warm-900 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full cursor-pointer" aria-label="Terug naar boven">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+			</button>
+			<CoffeeButton />
+		</div>
 		
 		<!-- Global Image Protection Script -->
 		<script>
@@ -83,6 +92,23 @@ const jsonLd = {
 					if ((e.target as HTMLElement)?.tagName === 'IMG') {
 						e.preventDefault();
 					}
+				});
+
+				// Back to Top Button Logic
+				const backToTopBtn = document.getElementById('back-to-top');
+				
+				window.addEventListener('scroll', () => {
+					if (window.scrollY > 500) {
+						backToTopBtn?.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+						backToTopBtn?.classList.add('opacity-100', 'translate-y-0');
+					} else {
+						backToTopBtn?.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+						backToTopBtn?.classList.remove('opacity-100', 'translate-y-0');
+					}
+				});
+
+				backToTopBtn?.addEventListener('click', () => {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
 				});
 			});
 		</script>

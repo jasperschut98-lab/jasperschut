@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import CoffeeButton from '../components/CoffeeButton.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -113,10 +114,11 @@ const images = sortedImageFiles.map((file: string) => {
 	</footer>
 
 	<!-- Sticky Navigation Buttons -->
-	<div class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40">
+	<div class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 flex flex-col gap-3">
 		<button id="back-to-top" class="opacity-0 translate-y-4 pointer-events-none transition-all duration-500 bg-cream-50 border border-cream-300 shadow-sm hover:shadow-md hover:border-warm-900 text-warm-900 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full" aria-label="Terug naar boven">
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 		</button>
+		<CoffeeButton />
 	</div>
 	
 	<div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40">

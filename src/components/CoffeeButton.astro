@@ -1,0 +1,34 @@
+---
+interface Props {
+	username?: string;
+}
+
+const { username = "jasperschut" } = Astro.props;
+---
+
+<a 
+	href={`https://www.buymeacoffee.com/${username}`} 
+	target="_blank" 
+	rel="noopener noreferrer"
+	class="flex items-center justify-center bg-cream-100 border border-cream-300 text-warm-900 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-sm hover:shadow-md hover:border-warm-900 transition-all duration-300 group"
+	aria-label="Buy me a coffee"
+>
+	<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		width="20" 
+		height="20" 
+		viewBox="0 0 24 24" 
+		fill="none" 
+		stroke="currentColor" 
+		stroke-width="1.5" 
+		stroke-linecap="round" 
+		stroke-linejoin="round"
+		class="group-hover:scale-110 transition-transform duration-300"
+	>
+		<path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+		<path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+		<line x1="6" x2="6" y1="2" y2="4" />
+		<line x1="10" x2="10" y1="2" y2="4" />
+		<line x1="14" x2="14" y1="2" y2="4" />
+	</svg>
+</a>
